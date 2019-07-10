@@ -1,15 +1,63 @@
 class Node 
-  attr_accessor :value, :next
+  attr_accessor :value, :nextNode
 
-  def initialize(value, nextNode)
+  def initialize(value, nextNode=nil)
     @value = value
-    @next = nextNode
+    @nextNode = nextNode
   end
 end
 
-# helps = Node.new(3, nil)
-node = Node.new(2, nil)
-head = Node.new(1, node)
+def print_value(list_node)
+  if list_node
+    print "#{list_node.value} -->"
+    print_value(list_node.nextNode)
+  else
+    print "nil\n"
+    return 
+  end
+end
 
-puts node.next
-puts node.value
+
+class Stack
+  attr_accessor :data
+
+  def intialize
+    @data = nil    
+  end
+
+  def push(value)
+    @data = Node.new(value, @data)
+  end
+
+  def pop
+    return print "nil\n" if @data.nil
+    print "#{@data.value}"
+    @data = @data.nextNode
+  end
+end
+
+
+  def reverse_list(list)
+    stack = Stack.new
+    while list 
+      stack.push(list.value)
+      list = list.nextNode
+    end
+    return stack.data
+
+  end
+
+
+head = Node.new(1)
+node = Node.new(2, head)
+node1 = Node.new(4, node)
+node2 = Node.new(15, node1)
+
+
+print_value(node2)
+
+puts "------"
+
+revlist = reverse_list(node2)
+
+print_value(revlist)
