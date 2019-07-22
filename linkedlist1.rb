@@ -52,12 +52,19 @@ head = Node.new(1)
 node = Node.new(2, head)
 node1 = Node.new(4, node)
 node2 = Node.new(15, node1)
+node3 = Node.new(40, node2)
 
 
-print_value(node2)
+print_value(node3)
 
 puts "------"
 
-revlist = reverse_list(node2)
+revlist = reverse_list(node3)
+
+print_value(revlist)
+
+revlist = reverse_list(revlist)
+
+puts "------"
 
 print_value(revlist)
